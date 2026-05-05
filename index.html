@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-4">
+      <!-- PROFILE -->
+      <div class="mb-4">
+        <h1 class="text-xl font-bold">Rifki Abdillah</h1>
+        <p class="text-sm text-gray-500">Fullstack Developer</p>
+      </div>
+
+      <!-- TIME -->
+      <div class="mb-4 text-sm text-gray-600" id="time"></div>
+
+      <!-- INPUT -->
+      <textarea
+        id="taskInput"
+        class="w-full p-2 border rounded-lg mb-2"
+        placeholder="lu mau apa..."
+      ></textarea>
+
+      <!-- PRIORITY -->
+      <p>Urgensinya apa...</p>
+      <select id="priority" class="w-full p-2 border rounded-lg mb-2">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <!-- BUTTON -->
+      <button
+        onclick="addTask()"
+        class="w-full bg-blue-500 text-white p-2 rounded-lg mb-4"
+      >
+        Tambah Task
+      </button>
+
+      <!-- TO DO -->
+      <h2 class="font-semibold mb-2">To Do</h2>
+      <div id="todoList" class="mb-4"></div>
+
+      <!-- DONE -->
+      <h2 class="font-semibold mb-2">Done</h2>
+      <div id="doneList" class="mb-4"></div>
+
+      <!-- DELETE ALL -->
+      <button
+        onclick="deleteAll()"
+        class="w-full bg-red-500 text-white p-2 rounded-lg"
+      >
+        Delete All
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
