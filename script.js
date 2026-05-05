@@ -31,3 +31,39 @@ function addTask() {
   render();
   document.getElementById("taskInput").value = "";
 }
+
+// RENDER TASK
+function render() {
+  const todoList = document.getElementById("todoList");
+  const doneList = document.getElementById("doneList");
+
+  todoList.innerHTML = "";
+  doneList.innerHTML = "";
+
+  const today = new Date().toDateString();
+
+  tasks.forEach((task) => {
+    if (task.date !== today) return;
+
+    const item = document.createElement("div");
+    item.className =
+      "flex items-center justify-between p-2 border rounded mb-2";
+
+    item.innerHTML = `
+      <div class="flex items-center gap-2">
+        <input type="checkbox" ${task.done ? "checked" : ""} onclick="toggleTask(${task.id})">
+        <div>
+          <p class="${task.done ? "line-through text-gray-400" : ""}">${task.text}</p>
+          <span class="text-xs text-${getColor(task.priority)}-500">${task.priority}</span>
+        </div>
+      </div>
+      <button onclick="deleteTask(${task.id})" class="text-red-500">X</button>
+    `;
+
+    if (task.done) {
+      doneList.appendChild(item);
+    } else {
+      todoList.appendChild(item);
+    }
+  });
+}
