@@ -67,3 +67,43 @@ function render() {
     }
   });
 }
+
+// WARNA PRIORITAS
+function getColor(priority) {
+  if (priority === "High") return "red";
+  if (priority === "Medium") return "yellow";
+  return "green";
+}
+
+// CHECK TASK
+function toggleTask(id) {
+  tasks = tasks.map((task) =>
+    task.id === id ? { ...task, done: !task.done } : task,
+  );
+  saveData();
+  render();
+}
+
+// DELETE TASK
+function deleteTask(id) {
+  tasks = tasks.filter((task) => task.id !== id);
+  saveData();
+  render();
+}
+
+// DELETE ALL
+function deleteAll() {
+  if (confirm("Hapus semua task?")) {
+    tasks = [];
+    saveData();
+    render();
+  }
+}
+
+// SIMPAN DATA
+function saveData() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// INIT
+render();
